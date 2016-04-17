@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>form</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+<script src="js/form.js"></script>
+</head>
+<body ng-controller="MyController">
+
+<form name="myForm" ng-submit="onsubmit()" novalidate>
+  <div>
+    <label for="mail">メールアドレス</label><br>
+    <input id="mail" name="mail" type="email" ng-model="user.mail" required>
+    <span ng-show="myForm.mail.$error.required">メールアドレスは必須です</span>
+    <span ng-show="myForm.mail.$error.email">メールアドレスを正しい形式で入力してください</span>
+  </div>
+  <div>
+    <input type="submit" value="登録" ng-disabled="myForm.$invalid">
+    <input type="reset" value="リセット" ng-disabled="myForm.$pristine">
+  </div>
+</form>
+
+</body>
+</html>
